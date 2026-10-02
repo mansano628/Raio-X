@@ -1,0 +1,299 @@
+/* Variáveis de Cores e Estilos Básicos */
+:root {
+    --bg-main: #f4f5f7;
+    --bg-white: #ffffff;
+    --primary-teal: #0d7f73;
+    --text-dark: #1f2937;
+    --text-gray: #6b7280;
+    --pill-inactive: #e5e7eb;
+    --border-radius-card: 24px;
+    --border-radius-pill: 30px;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}
+
+body {
+    background-color: #e0e0e0; /* Fundo escuro fora do app para destacar no desktop */
+    display: flex;
+    justify-content: center;
+}
+
+/* Container Principal Mobile-First */
+.app-container {
+    width: 100%;
+    max-width: 420px; /* Limite de tamanho de celular */
+    background-color: var(--bg-main);
+    min-height: 100vh;
+    position: relative;
+    padding-bottom: 90px; /* Espaço para a barra inferior não cobrir os cards */
+    box-shadow: 0 0 20px rgba(0,0,0,0.1);
+}
+
+/* === Barra de Pesquisa === */
+.header {
+    padding: 20px 20px 10px;
+    background-color: var(--bg-main);
+    position: sticky;
+    top: 0;
+    z-index: 10;
+}
+
+.search-container {
+    position: relative;
+    width: 100%;
+}
+
+.search-icon {
+    position: absolute;
+    left: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--text-gray);
+    font-size: 14px;
+}
+
+#search-input {
+    width: 100%;
+    padding: 14px 15px 14px 40px;
+    border-radius: var(--border-radius-pill);
+    border: none;
+    background-color: var(--bg-white);
+    font-size: 14px;
+    color: var(--text-dark);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+    outline: none;
+}
+
+#search-input::placeholder {
+    color: #9ca3af;
+}
+
+/* === Filtros de Categoria (Pílulas) === */
+.filters-container {
+    display: flex;
+    gap: 10px;
+    padding: 10px 20px 20px;
+    overflow-x: auto;
+    scrollbar-width: none; /* Esconde scrollbar no Firefox */
+}
+
+.filters-container::-webkit-scrollbar {
+    display: none; /* Esconde scrollbar no Chrome/Safari */
+}
+
+.filter-pill {
+    padding: 8px 18px;
+    border-radius: var(--border-radius-pill);
+    font-size: 13px;
+    font-weight: 600;
+    border: none;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: all 0.3s ease;
+}
+
+.filter-pill.active {
+    background-color: var(--primary-teal);
+    color: var(--bg-white);
+}
+
+.filter-pill.inactive {
+    background-color: var(--bg-white);
+    color: var(--text-gray);
+    border: 1px solid #e5e7eb;
+}
+
+/* === Cards de Livros === */
+.book-list {
+    padding: 0 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.card {
+    background-color: var(--bg-white);
+    border-radius: var(--border-radius-card);
+    padding: 22px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.03);
+    border: 1px solid #f3f4f6;
+}
+
+.card-header {
+    font-size: 11px;
+    color: var(--text-gray);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 6px;
+}
+
+.card-title {
+    font-size: 18px;
+    color: var(--text-dark);
+    font-weight: 700;
+    margin-bottom: 2px;
+    line-height: 1.2;
+}
+
+.card-subtitle {
+    font-size: 13px;
+    color: var(--text-gray);
+    margin-bottom: 14px;
+}
+
+.card-synopsis {
+    font-size: 14px;
+    color: #4b5563;
+    line-height: 1.5;
+    margin-bottom: 14px;
+}
+
+.card-hook {
+    font-size: 14px;
+    color: var(--text-dark);
+    line-height: 1.5;
+    margin-bottom: 18px;
+    background-color: #f8fafc;
+    padding: 10px 14px;
+    border-radius: 12px;
+    border-left: 4px solid var(--primary-teal);
+}
+
+.card-hook strong {
+    color: var(--primary-teal);
+}
+
+.card-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.tag-pill {
+    background-color: var(--bg-main);
+    color: var(--text-gray);
+    padding: 5px 12px;
+    border-radius: 12px;
+    font-size: 11px;
+    font-weight: 500;
+}
+
+/* === Barra de Navegação Inferior === */
+.bottom-nav {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    max-width: 420px; /* Alinhado com o max-width do app */
+    background-color: var(--bg-white);
+    display: flex;
+    justify-content: space-around;
+    padding: 12px 0 25px; /* Padding extra embaixo para a área segura do iPhone */
+    border-top: 1px solid #f3f4f6;
+    border-radius: 24px 24px 0 0;
+    box-shadow: 0 -4px 15px rgba(0,0,0,0.03);
+    z-index: 20;
+}
+
+.nav-btn {
+    background: none;
+    border: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    color: #9ca3af;
+    cursor: pointer;
+    font-size: 18px;
+}
+
+.nav-btn span {
+    font-size: 10px;
+    font-weight: 600;
+}
+
+.nav-btn.active {
+    color: var(--primary-teal);
+}
+/* === Estilo do Botão "Ler Resumo" no Card === */
+.read-btn {
+    width: 100%;
+    padding: 12px;
+    margin-top: 15px;
+    background-color: var(--primary-teal);
+    color: var(--bg-white);
+    border: none;
+    border-radius: 12px;
+    font-weight: 600;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.read-btn:hover { background-color: #0a665c; }
+
+/* === Estilo da Janela Modal (Fundo Escuro e Janela Branca) === */
+.modal {
+    display: none; /* Escondido por padrão */
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background-color: rgba(0, 0, 0, 0.6);
+    z-index: 100;
+    justify-content: center;
+    align-items: flex-end; /* Fica preso na parte de baixo como num app real */
+}
+
+/* Classe que o JS vai adicionar para mostrar o modal */
+.modal.active { display: flex; }
+
+.modal-content {
+    background-color: var(--bg-white);
+    width: 100%;
+    max-width: 420px;
+    border-radius: 24px 24px 0 0;
+    padding: 24px;
+    max-height: 85vh; /* Ocupa no máximo 85% da tela */
+    overflow-y: auto; /* Permite rolar o texto se for longo */
+    position: relative;
+    box-shadow: 0 -10px 25px rgba(0,0,0,0.1);
+    animation: slideUp 0.3s ease-out;
+}
+
+/* Animação suave subindo */
+@keyframes slideUp {
+    from { transform: translateY(100%); }
+    to { transform: translateY(0); }
+}
+
+.close-btn {
+    background: none;
+    border: none;
+    color: var(--text-gray);
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+/* === Botão de Leitura Completa no Modal === */
+.full-read-btn {
+    background-color: #1f2937; /* Cor chumbo escuro para diferenciar */
+    font-size: 16px;
+    padding: 14px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.full-read-btn:hover { 
+    background-color: #111827; 
+}

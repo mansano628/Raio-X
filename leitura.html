@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Leitura - Projeto Acex</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* Estilos específicos para a tela de leitura focada */
+        .reading-header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            padding: 20px;
+            background-color: var(--bg-white);
+            position: sticky;
+            top: 0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            z-index: 10;
+        }
+        .back-btn {
+            background: none;
+            border: none;
+            font-size: 20px;
+            color: var(--text-dark);
+            cursor: pointer;
+        }
+        .reading-title {
+            font-size: 18px;
+            font-weight: 700;
+            color: var(--text-dark);
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        .reading-content {
+            padding: 25px 20px 50px;
+            background-color: var(--bg-main);
+            min-height: 100vh;
+            font-size: 16px;
+            line-height: 1.8; /* Espaçamento perfeito para não cansar a vista */
+            color: #374151;
+        }
+        .reading-content h3 {
+            color: var(--primary-teal);
+            margin: 25px 0 10px;
+            font-size: 20px;
+        }
+        .reading-content p {
+            margin-bottom: 15px;
+        }
+    </style>
+</head>
+<body>
+    <div class="app-container">
+        <!-- Cabeçalho com botão de Voltar -->
+        <header class="reading-header">
+            <button class="back-btn" onclick="window.location.href='index.html'">
+                <i class="fa-solid fa-arrow-left"></i>
+            </button>
+            <h1 class="reading-title">Modo Leitura</h1>
+        </header>
+
+        <!-- Onde o texto gigante de 5 páginas vai aparecer -->
+        <main class="reading-content" id="conteudo-livro">
+            Carregando o resumo...
+        </main>
+    </div>
+
+    <!-- Importa o banco de textos gigantes -->
+    <script src="textos.js"></script>
+    
+    <!-- Lógica para puxar o texto correto -->
+    <script>
+        // 1. Pega o ID que veio na URL (ex: leitura.html?id=2)
+        const urlParams = new URLSearchParams(window.location.search);
+        const idDoLivro = urlParams.get('id');
+
+        // 2. Procura o texto gigante no arquivo textos.js
+        const areaDeConteudo = document.getElementById('conteudo-livro');
+        
+        if (idDoLivro && textosCompletos[idDoLivro]) {
+            // Se achou, joga as 5 páginas na tela!
+            areaDeConteudo.innerHTML = textosCompletos[idDoLivro];
+        } else {
+            // Se o aluno clicou num livro que ainda não tem o resumo pronto
+            areaDeConteudo.innerHTML = `
+                <div style="text-align: center; margin-top: 50px;">
+                    <i class="fa-solid fa-person-digging" style="font-size: 40px; color: #9ca3af; margin-bottom: 15px;"></i>
+                    <p>Opa! A nossa Inteligência Artificial ainda está escrevendo o resumo deste livro.</p>
+                    <p style="margin-top: 10px;">Volte em breve!</p>
+                </div>
+            `;
+        }
+    </script>
+</body>
+</html>

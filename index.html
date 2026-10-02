@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Projeto Acex - Biblioteca</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="app-container">
+        <header class="header">
+            <div class="search-container">
+                <i class="fa-solid fa-magnifying-glass search-icon"></i>
+                <input type="text" id="search-input" placeholder="Buscar por título, autor, tema ou tag...">
+            </div>
+        </header>
+
+        <nav class="filters-container" id="filters-container">
+            </nav>
+
+        <main class="book-list" id="book-list">
+            </main>
+            <div id="book-modal" class="modal">
+            <div class="modal-content">
+                <button class="close-btn" onclick="fecharResumo()">
+                    <i class="fa-solid fa-xmark"></i> Fechar
+                </button>
+                <div id="modal-body">
+                    </div>
+            </div>
+        </div>
+
+        <nav class="bottom-nav">
+            <button class="nav-btn active">
+                <i class="fa-solid fa-book-open"></i>
+                <span>Biblioteca</span>
+            </button>
+            <button class="nav-btn">
+                <i class="fa-solid fa-layer-group"></i>
+                <span>Categorias</span>
+            </button>
+        </nav>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
